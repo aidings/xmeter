@@ -64,7 +64,8 @@ class AverageMeter(object):
     
     def update(self, name_dict, count=1):
         for name, value in name_dict.items():
-            self.meters[name].update(value, n=count)
+            if name in self.meters.keys():
+                self.meters[name].update(value, n=count)
 
     def __str__(self):
         if self.prefix != '':
